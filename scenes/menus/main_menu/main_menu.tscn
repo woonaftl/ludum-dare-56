@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://t7hm2y57ass0"]
+
+[ext_resource type="PackedScene" uid="uid://mnyny7qmi8do" path="res://scenes/menus/menu_background/menu_background.tscn" id="1_0chfx"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu.gd" id="1_soy77"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu/settings_button.gd" id="2_ds857"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu/play_button.gd" id="2_xkhe4"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu/credits_button.gd" id="3_33bvt"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu/quit_button.gd" id="3_hfi28"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_soy77")
+
+[node name="MenuBackground" parent="." instance=ExtResource("1_0chfx")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "GAME_TITLE"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../SettingsButton")
+text = "NEW_GAME"
+script = ExtResource("2_xkhe4")
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+text = "SETTINGS"
+script = ExtResource("2_ds857")
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "CREDITS"
+script = ExtResource("3_33bvt")
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
+text = "QUIT"
+script = ExtResource("3_hfi28")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/PlayButton" to="CenterContainer/VBoxContainer/VBoxContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/SettingsButton" to="CenterContainer/VBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/CreditsButton" to="CenterContainer/VBoxContainer/VBoxContainer/CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/QuitButton" to="CenterContainer/VBoxContainer/VBoxContainer/QuitButton" method="_on_pressed"]

@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://d3p7ncp3hlyfm"]
+
+[ext_resource type="Texture2D" uid="uid://c8j1qssye27yk" path="res://2d/ui/button_disabled.png" id="1_4w57y"]
+[ext_resource type="FontFile" uid="uid://bk0gq7s7coitm" path="res://fonts/Magica8px.ttf" id="1_qxnxh"]
+[ext_resource type="Texture2D" uid="uid://bivrfkjo5ndj1" path="res://2d/ui/button_focus.png" id="2_x77ey"]
+[ext_resource type="Texture2D" uid="uid://bbe6t5hni1jly" path="res://2d/ui/button_hover.png" id="3_7fmht"]
+[ext_resource type="Texture2D" uid="uid://bgn2bp1vg6qlu" path="res://2d/ui/button_default.png" id="4_3w7b5"]
+[ext_resource type="Texture2D" uid="uid://bigvcq823c2dv" path="res://2d/ui/button_pressed.png" id="5_yfhas"]
+[ext_resource type="Texture2D" uid="uid://bif3qmrgf4wxf" path="res://2d/ui/slider_grabber.png" id="6_wvj7b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ulqj"]
+texture = ExtResource("1_4w57y")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_82lj2"]
+texture = ExtResource("2_x77ey")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avbrq"]
+texture = ExtResource("3_7fmht")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m2ior"]
+texture = ExtResource("4_3w7b5")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_riim4"]
+texture = ExtResource("5_yfhas")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("1_qxnxh")
+default_font_size = 8
+Button/styles/disabled = SubResource("StyleBoxTexture_4ulqj")
+Button/styles/focus = SubResource("StyleBoxTexture_82lj2")
+Button/styles/hover = SubResource("StyleBoxTexture_avbrq")
+Button/styles/normal = SubResource("StyleBoxTexture_m2ior")
+Button/styles/pressed = SubResource("StyleBoxTexture_riim4")
+HSlider/icons/grabber = ExtResource("6_wvj7b")
+RichTextLabel/constants/line_separation = 1

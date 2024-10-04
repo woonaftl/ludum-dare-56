@@ -1,0 +1,6 @@
+extends Button
+
+
+func _on_pressed():
+	UserSettings.set_locale("ru")
+	get_tree().change_scene_to_file(ScenePaths.MAIN_MENU)

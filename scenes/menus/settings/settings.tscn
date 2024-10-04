@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://ebfrh27j07oo"]
+
+[ext_resource type="Script" path="res://scenes/menus/settings/settings.gd" id="1_7f7cf"]
+[ext_resource type="PackedScene" uid="uid://mnyny7qmi8do" path="res://scenes/menus/menu_background/menu_background.tscn" id="2_iqgwm"]
+[ext_resource type="Script" path="res://scenes/menus/settings/volume_slider.gd" id="2_ocuaa"]
+
+[node name="Settings" type="Window"]
+process_mode = 3
+mode = 2
+position = Vector2i(0, 36)
+size = Vector2i(640, 360)
+exclusive = true
+unresizable = true
+borderless = true
+script = ExtResource("1_7f7cf")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_iqgwm")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="DisplayOptionContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/DisplayOptionContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "DISPLAY_MODE"
+vertical_alignment = 1
+
+[node name="DisplayModeButton" type="OptionButton" parent="VBoxContainer/DisplayOptionContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "WINDOWED"
+popup/item_1/text = "FULL_SCREEN"
+popup/item_1/id = 1
+
+[node name="LanguageContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/LanguageContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "LANGUAGE"
+vertical_alignment = 1
+
+[node name="LanguageButton" type="OptionButton" parent="VBoxContainer/LanguageContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "ENGLISH"
+popup/item_1/text = "ESPAÑOL"
+popup/item_1/id = 1
+popup/item_2/text = "РУССКИЙ"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "VOLUME"
+vertical_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_ocuaa")
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+
+[connection signal="item_selected" from="VBoxContainer/DisplayOptionContainer/DisplayModeButton" to="." method="_on_display_mode_button_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/LanguageContainer/LanguageButton" to="." method="_on_language_button_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/MasterVolumeSlider" to="VBoxContainer/HBoxContainer/MasterVolumeSlider" method="_on_value_changed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
