@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b84p6pdxy56fo"]
 
-[ext_resource type="Script" path="res://scenes/game/level/main_menu_button.gd" id="1_1l88v"]
 [ext_resource type="Script" path="res://scenes/menus/credits/credits.gd" id="1_l3lhb"]
 [ext_resource type="PackedScene" uid="uid://mnyny7qmi8do" path="res://scenes/menus/menu_background/menu_background.tscn" id="1_seeed"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu_button.gd" id="3_oncec"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -59,6 +59,6 @@ custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "BACK"
-script = ExtResource("1_1l88v")
+script = ExtResource("3_oncec")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="CenterContainer/VBoxContainer/MainMenuButton" method="_on_pressed"]

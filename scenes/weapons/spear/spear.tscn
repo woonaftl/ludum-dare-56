@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdtlkojhkrqr"]
+
+[ext_resource type="Script" path="res://scenes/weapons/spear/spear.gd" id="1_ot8ex"]
+[ext_resource type="Script" path="res://scenes/damage_area.gd" id="2_7glbd"]
+[ext_resource type="Texture2D" uid="uid://c8ahxos2lyths" path="res://2d/weapons/spear.png" id="3_jis2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iygl0"]
+size = Vector2(32, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_foxq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jis2x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Spear" type="Node2D"]
+z_index = 96
+script = ExtResource("1_ot8ex")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_7glbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_iygl0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_foxq6")
+
+[node name="LifespanTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
+[connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

@@ -1,4 +1,4 @@
-keys,en,es,ru
+﻿keys,en,es,ru
 GAME_TITLE,UNTITLED GAME,JUEGO INTITULADO,БЕЗЫМЯННАЯ ИГРА
 MAIN_MENU,MAIN MENU,MENÚ PRINCIPAL,ГЛАВНОЕ МЕНЮ
 NEW_GAME,NEW GAME,PARTIDA NUEVA,НОВАЯ ИГРА
@@ -12,6 +12,32 @@ DISPLAY_MODE,DISPLAY MODE,MODO,РЕЖИМ
 WINDOWED,WINDOWED,VENTANA,ОКНО
 FULL_SCREEN,FULL SCREEN,PANTALLA COMPLETO,ПОЛНЫЙ ЭКРАН
 OK,OK,BIEN,ДА
+GAME_OVER,GAME OVER,JUEGO TERMINADO,КОНЕЦ ИГРЫ
 CANCEL,CANCEL,CANCELAR,ОТМЕНА
+CHOOSE,CHOOSE,ELEGIR,ВЫБРАТЬ
+CHOOSE_REWARD,CHOOSE 1 OF 3,ELIGE 1 DE 3,ВЫБЕРИ 1 ИЗ 3
 THANKS_FOR_PLAYING,THANKS FOR PLAYING,GRACIAS POR JUGAR,СПАСИБО ЗА ИГРУ
-CREDITS_FULL,Game by Eugene Begunkov,Juego de Eugenio Begunkov,Автор: Евгений Бегунков
+CREDITS_FULL,"[center]Game by Eugene Begunkov
+Powered by Godot Engine 4.3
+Made for Ludum Dare 56 Jam
+Theme: Tiny Creatures[/center]","[center]Juego de Eugenio Begunkov
+Motor de juego: Godot 4.3
+Hecho para Ludum Dare 56 Jam
+Tema: Tiny Creatures[/center]","[center]Автор: Евгений Бегунков
+Движок: Godot 4.3
+Сделано для Ludum Dare 56 Jam
+Тема: Tiny Creatures[/center]"
+EYE_TITLE,[center]Eye[/center],,
+GUNNER_TITLE,[center]Gunner[/center],,
+KNIGHT_TITLE,[center]Knight[/center],,
+PYRO_TITLE,[center]Pyro[/center],,
+SPEARCAT_TITLE,[center]Spearcat[/center],[center]Lancero[/center],[center]Котейщик[/center]
+TRAPPER_TITLE,[center]Trapper[/center],,
+WITCH_TITLE,[center]Witch[/center],[center]Bruja[/center],[center]Ведьма[/center]
+EYE_DESCRIPTION,[center]Shoots a deadly piercing laser[/center],,
+GUNNER_DESCRIPTION,[center]Shoots with their trustworthy gun[/center],,
+KNIGHT_DESCRIPTION,[center]Wields a rotating sword[/center],,
+PYRO_DESCRIPTION,[center]Throws an explosive grenade[/center],,
+SPEARCAT_DESCRIPTION,[center]Throws a magical spear that pierces enemies[/center],,
+TRAPPER_DESCRIPTION,[center]Lays mines that explode after enemies step on them[/center],,
+WITCH_DESCRIPTION,[center]Performs a ritual killing every enemy nearby[/center],,
