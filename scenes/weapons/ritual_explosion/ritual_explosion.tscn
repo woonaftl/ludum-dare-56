@@ -37,10 +37,46 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2hh8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78yh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btf6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x6et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hh8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78yh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btf6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x6et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hh8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78yh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btf6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x6et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hh8a")
 }],
 "loop": false,
 "name": &"default",
-"speed": 15.0
+"speed": 30.0
 }]
 
 [node name="RitualExplosion" type="Node2D"]

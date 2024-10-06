@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bok8fyhqxglb4"
+
+[deps]
+
+files=["res://texts/creatures.en.translation", "res://texts/creatures.es.translation", "res://texts/creatures.ru.translation"]
+
+source_file="res://texts/creatures.csv"
+dest_files=["res://texts/creatures.en.translation", "res://texts/creatures.es.translation", "res://texts/creatures.ru.translation"]
+
+[params]
+
+compress=true
+delimiter=0

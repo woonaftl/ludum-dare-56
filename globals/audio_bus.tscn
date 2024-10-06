@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=3 uid="uid://dr0m6set84b3m"]
+
+[ext_resource type="Script" path="res://globals/audio_bus.gd" id="1_1vobk"]
+[ext_resource type="AudioStream" uid="uid://cwj5433t75blx" path="res://audio/bullet_hit.wav" id="2_06c1g"]
+[ext_resource type="AudioStream" uid="uid://bjmpf1p370x6t" path="res://audio/click.wav" id="2_6ys4j"]
+[ext_resource type="AudioStream" uid="uid://cwu0tavdwdy1f" path="res://audio/creature_die.wav" id="4_ymcwx"]
+[ext_resource type="AudioStream" uid="uid://b6lcs4ltr0txs" path="res://audio/explosion.wav" id="5_3syju"]
+[ext_resource type="AudioStream" uid="uid://djtlauacau6hh" path="res://audio/grenade_throw.wav" id="6_mpdxn"]
+[ext_resource type="AudioStream" uid="uid://cuswbdhlkyav4" path="res://audio/gun_shoot.wav" id="7_lxu0t"]
+[ext_resource type="AudioStream" uid="uid://dw7umqwasyplt" path="res://audio/laser_shoot.wav" id="8_nl34x"]
+[ext_resource type="AudioStream" uid="uid://dq6x0dk7oicju" path="res://audio/level_up.wav" id="9_k3bg1"]
+[ext_resource type="AudioStream" uid="uid://c6hkstu1cse5j" path="res://audio/mine_lay.wav" id="10_t14u6"]
+[ext_resource type="AudioStream" uid="uid://bpvbw677e6chy" path="res://audio/pickup_xp.wav" id="11_qjfh2"]
+[ext_resource type="AudioStream" uid="uid://c0mw7cuq5dy0v" path="res://audio/ritual.wav" id="12_7hg3w"]
+[ext_resource type="AudioStream" uid="uid://dsp2usv7dwlqs" path="res://audio/spear_throw.wav" id="13_re7l8"]
+
+[node name="AudioBus" type="Node"]
+process_mode = 3
+script = ExtResource("1_1vobk")
+
+[node name="BulletHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_06c1g")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6ys4j")
+
+[node name="CreatureDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ymcwx")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3syju")
+volume_db = -1.0
+
+[node name="GrenadeThrow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mpdxn")
+volume_db = -2.0
+
+[node name="GunShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lxu0t")
+volume_db = -4.0
+
+[node name="LaserShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nl34x")
+volume_db = -2.0
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_k3bg1")
+
+[node name="MineLay" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_t14u6")
+
+[node name="PickupXp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qjfh2")
+volume_db = -1.0
+
+[node name="Ritual" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_7hg3w")
+volume_db = -2.0
+
+[node name="SpearThrow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_re7l8")
+volume_db = -2.0

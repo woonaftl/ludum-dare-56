@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvuwao2t2htki"]
+
+[ext_resource type="Script" path="res://scenes/creatures/player/player.gd" id="1_cfb5q"]
+[ext_resource type="SpriteFrames" uid="uid://dhxeua2sngcos" path="res://2d/creatures/player/crusader.tres" id="2_evqvv"]
+[ext_resource type="Script" path="res://scenes/creatures/pivot_point.gd" id="3_bi4ah"]
+[ext_resource type="Texture2D" uid="uid://bjhys4xh8dedd" path="res://2d/weapons/sword.png" id="4_8fxcs"]
+[ext_resource type="Script" path="res://scenes/creatures/player/crusader/sword.gd" id="4_ovw1a"]
+[ext_resource type="Script" path="res://scenes/damage_area.gd" id="6_oce7w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0765"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ygva"]
+size = Vector2(6, 48)
+
+[node name="Crusader" type="CharacterBody2D" groups=["player"]]
+z_index = 64
+motion_mode = 1
+script = ExtResource("1_cfb5q")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_evqvv")
+animation = &"die"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j0765")
+
+[node name="PivotPoint" type="Node2D" parent="."]
+script = ExtResource("3_bi4ah")
+
+[node name="Sword" type="Node2D" parent="PivotPoint"]
+position = Vector2(0, -24)
+script = ExtResource("4_ovw1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="PivotPoint/Sword"]
+texture = ExtResource("4_8fxcs")
+
+[node name="Area2D" type="Area2D" parent="PivotPoint/Sword"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_oce7w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PivotPoint/Sword/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8ygva")
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="body_entered" from="PivotPoint/Sword/Area2D" to="PivotPoint/Sword/Area2D" method="_on_body_entered"]

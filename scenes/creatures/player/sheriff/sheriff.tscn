@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bny3b0fyucvh7"]
+
+[ext_resource type="Script" path="res://scenes/creatures/player/player.gd" id="1_yebgx"]
+[ext_resource type="SpriteFrames" uid="uid://bui3yd7bvf77r" path="res://2d/creatures/player/sheriff.tres" id="2_nped2"]
+[ext_resource type="Script" path="res://scenes/creatures/player/sheriff/gun.gd" id="3_h7d25"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0765"]
+radius = 8.0
+
+[node name="Sheriff" type="CharacterBody2D" groups=["player"]]
+z_index = 64
+motion_mode = 1
+script = ExtResource("1_yebgx")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_nped2")
+animation = &"die"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j0765")
+
+[node name="Gun" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+script = ExtResource("3_h7d25")
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="timeout" from="Gun" to="Gun" method="_on_timeout"]

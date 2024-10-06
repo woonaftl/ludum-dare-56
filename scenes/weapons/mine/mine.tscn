@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c40r3ih1ob7sb"]
+
+[ext_resource type="Script" path="res://scenes/weapons/mine/mine.gd" id="1_217en"]
+[ext_resource type="Texture2D" uid="uid://cfy4yulk1e7xw" path="res://2d/weapons/mine.png" id="2_miaex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8mwl"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fkgtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_miaex")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mine" type="Node2D"]
+z_index = 96
+script = ExtResource("1_217en")
+
+[node name="TriggerArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+shape = SubResource("CircleShape2D_l8mwl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fkgtc")
+
+[node name="LifespanTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

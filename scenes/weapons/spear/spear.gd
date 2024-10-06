@@ -2,7 +2,7 @@ extends Node2D
 
 
 var speed: float = 250.0
-var damage: int = 1
+var damage: int = 2
 var direction: Vector2
 
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://tts4xk8pcp1"]
+
+[ext_resource type="Script" path="res://scenes/creatures/player/player.gd" id="1_iyyu8"]
+[ext_resource type="SpriteFrames" uid="uid://dec61jndlaeml" path="res://2d/creatures/player/scarab.tres" id="2_khvke"]
+[ext_resource type="Script" path="res://scenes/creatures/player/scarab/mine_layer.gd" id="3_28v1d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0765"]
+radius = 8.0
+
+[node name="Scarab" type="CharacterBody2D" groups=["player"]]
+z_index = 64
+motion_mode = 1
+script = ExtResource("1_iyyu8")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_khvke")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j0765")
+
+[node name="MineLayer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+script = ExtResource("3_28v1d")
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="timeout" from="MineLayer" to="MineLayer" method="_on_timeout"]

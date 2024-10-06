@@ -1,19 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxxo15flfrigi"]
+[gd_scene load_steps=5 format=3 uid="uid://cxxo15flfrigi"]
 
 [ext_resource type="Script" path="res://scenes/creatures/player/player.gd" id="1_d7oun"]
-[ext_resource type="Texture2D" uid="uid://2ekp542e4rw4" path="res://2d/creatures/player/pyro.png" id="2_4gjbb"]
+[ext_resource type="SpriteFrames" uid="uid://y4e37406dwxd" path="res://2d/creatures/player/pyro.tres" id="2_5rfoe"]
 [ext_resource type="Script" path="res://scenes/creatures/player/pyro/grenade_launcher.gd" id="3_f6air"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oax4n"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_4gjbb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0765"]
 radius = 8.0
@@ -25,14 +14,16 @@ script = ExtResource("1_d7oun")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_oax4n")
+sprite_frames = ExtResource("2_5rfoe")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j0765")
 
 [node name="GrenadeLauncher" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 3.0
 autostart = true
 script = ExtResource("3_f6air")
 
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="timeout" from="GrenadeLauncher" to="GrenadeLauncher" method="_on_timeout"]

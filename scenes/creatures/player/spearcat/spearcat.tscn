@@ -1,19 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://idj0tv1ngy8j"]
+[gd_scene load_steps=5 format=3 uid="uid://idj0tv1ngy8j"]
 
 [ext_resource type="Script" path="res://scenes/creatures/player/player.gd" id="1_vhwdx"]
-[ext_resource type="Texture2D" uid="uid://dtqn3ysnlpq3j" path="res://2d/creatures/player/spearcat.png" id="2_rcwuc"]
+[ext_resource type="SpriteFrames" uid="uid://btnq8mtb8ge8e" path="res://2d/creatures/player/spearcat.tres" id="2_1uasi"]
 [ext_resource type="Script" path="res://scenes/creatures/player/spearcat/spear_thrower.gd" id="3_hpwcp"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wd34x"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_rcwuc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0765"]
 radius = 8.0
@@ -25,14 +14,17 @@ script = ExtResource("1_vhwdx")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_wd34x")
+sprite_frames = ExtResource("2_1uasi")
+animation = &"die"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j0765")
 
 [node name="SpearThrower" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 3.5
 autostart = true
 script = ExtResource("3_hpwcp")
 
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="timeout" from="SpearThrower" to="SpearThrower" method="_on_timeout"]

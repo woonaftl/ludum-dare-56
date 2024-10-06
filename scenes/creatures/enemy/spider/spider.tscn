@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfm7lrbjjc88q"]
+
+[ext_resource type="Script" path="res://scenes/creatures/enemy/enemy.gd" id="1_wj8fs"]
+[ext_resource type="Texture2D" uid="uid://dhsamyur4q8ch" path="res://2d/creatures/enemy/spider.png" id="2_td5qw"]
+[ext_resource type="Script" path="res://scenes/damage_area.gd" id="3_4lhlt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mwmrg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_td5qw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6gvmd"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8q72r"]
+radius = 4.0
+
+[node name="Spider" type="CharacterBody2D" groups=["enemy"]]
+z_index = 32
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_wj8fs")
+hp_max = 3
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_mwmrg")
+autoplay = "default"
+
+[node name="CollisionWithEnemies" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_6gvmd")
+disabled = true
+
+[node name="DamageArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_4lhlt")
+
+[node name="CollisionWithPlayer" type="CollisionShape2D" parent="DamageArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_8q72r")
+disabled = true
+
+[node name="SpawnInvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
+[connection signal="timeout" from="SpawnInvulnerabilityTimer" to="." method="_on_spawn_invulnerability_timer_timeout"]

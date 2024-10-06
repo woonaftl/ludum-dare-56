@@ -7,6 +7,8 @@ LANGUAGE,LANGUAGE,IDIOMA,ЯЗЫК
 CREDITS,CREDITS,CRÉDITOS,ОБ ИГРЕ
 QUIT,QUIT,SALIR,ВЫХОД
 VOLUME,VOLUME,VOLUMEN,ГРОМКОСТЬ
+PAUSE,PAUSE,PAUSA,ПАУЗА
+CONTINUE,CONTINUE,CONTINUAR,ПРОДОЛЖИТЬ
 BACK,BACK,ATRÁS,НАЗАД
 DISPLAY_MODE,DISPLAY MODE,MODO,РЕЖИМ
 WINDOWED,WINDOWED,VENTANA,ОКНО
@@ -19,25 +21,18 @@ CHOOSE_REWARD,CHOOSE 1 OF 3,ELIGE 1 DE 3,ВЫБЕРИ 1 ИЗ 3
 THANKS_FOR_PLAYING,THANKS FOR PLAYING,GRACIAS POR JUGAR,СПАСИБО ЗА ИГРУ
 CREDITS_FULL,"[center]Game by Eugene Begunkov
 Powered by Godot Engine 4.3
-Made for Ludum Dare 56 Jam
+Made in 72 hours for Ludum Dare 56 Jam
 Theme: Tiny Creatures[/center]","[center]Juego de Eugenio Begunkov
 Motor de juego: Godot 4.3
-Hecho para Ludum Dare 56 Jam
+Hecho en 72 horas para Ludum Dare 56 Jam
 Tema: Tiny Creatures[/center]","[center]Автор: Евгений Бегунков
 Движок: Godot 4.3
-Сделано для Ludum Dare 56 Jam
+Сделано за 72 часа для Ludum Dare 56 Jam
 Тема: Tiny Creatures[/center]"
-EYE_TITLE,[center]Eye[/center],,
-GUNNER_TITLE,[center]Gunner[/center],,
-KNIGHT_TITLE,[center]Knight[/center],,
-PYRO_TITLE,[center]Pyro[/center],,
-SPEARCAT_TITLE,[center]Spearcat[/center],[center]Lancero[/center],[center]Котейщик[/center]
-TRAPPER_TITLE,[center]Trapper[/center],,
-WITCH_TITLE,[center]Witch[/center],[center]Bruja[/center],[center]Ведьма[/center]
-EYE_DESCRIPTION,[center]Shoots a deadly piercing laser[/center],,
-GUNNER_DESCRIPTION,[center]Shoots with their trustworthy gun[/center],,
-KNIGHT_DESCRIPTION,[center]Wields a rotating sword[/center],,
-PYRO_DESCRIPTION,[center]Throws an explosive grenade[/center],,
-SPEARCAT_DESCRIPTION,[center]Throws a magical spear that pierces enemies[/center],,
-TRAPPER_DESCRIPTION,[center]Lays mines that explode after enemies step on them[/center],,
-WITCH_DESCRIPTION,[center]Performs a ritual killing every enemy nearby[/center],,
+TUTORIAL_FULL,"Press WASD or ^<¤> to move
+Survive for 5 minutes
+Collect stars","Presiona WASD o ^<¤> para moverse
+Sobrevivir por 5 minutos
+Recoge estrellas","Нажимай WASD или ^<¤>, чтобы двигаться
+Проживи 5 минут
+Собирай звёздочки"

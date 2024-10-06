@@ -1,19 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpt3w6pl81jhy"]
+[gd_scene load_steps=5 format=3 uid="uid://dpt3w6pl81jhy"]
 
 [ext_resource type="Script" path="res://scenes/creatures/player/player.gd" id="1_ch8gu"]
-[ext_resource type="Texture2D" uid="uid://cligsfh3457mm" path="res://2d/creatures/player/witch.png" id="2_8wmsp"]
+[ext_resource type="SpriteFrames" uid="uid://bqfvwsnumwt3f" path="res://2d/creatures/player/witch.tres" id="2_voci8"]
 [ext_resource type="Script" path="res://scenes/creatures/player/witch/ritual.gd" id="3_0vyol"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7t4hq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_8wmsp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0765"]
 radius = 8.0
@@ -25,7 +14,11 @@ script = ExtResource("1_ch8gu")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_7t4hq")
+sprite_frames = ExtResource("2_voci8")
+animation = &"shoot"
+autoplay = "default"
+frame = 10
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j0765")
@@ -35,4 +28,5 @@ wait_time = 10.0
 autostart = true
 script = ExtResource("3_0vyol")
 
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="timeout" from="Ritual" to="Ritual" method="_on_timeout"]

@@ -8,6 +8,7 @@ var direction: Vector2
 func _physics_process(delta: float) -> void:
 	if direction:
 		speed = clampf(speed * 0.95, 0.0, speed)
+		rotation += 0.25 * speed * delta
 		position += direction * speed * delta
 	else:
 		queue_free()

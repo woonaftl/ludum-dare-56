@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://drbjrj72cuamt"]
+
+[ext_resource type="Script" path="res://scenes/pickups/experience/experience.gd" id="1_8eabg"]
+[ext_resource type="Texture2D" uid="uid://cp8ax4t5kmleh" path="res://2d/pickups/star.png" id="3_d2nba"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1mgfc"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q08yl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d2nba")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Experience" type="Node2D"]
+z_index = 4
+script = ExtResource("1_8eabg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1mgfc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q08yl")
+
+[node name="LifespanTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="WarningTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]
+[connection signal="timeout" from="WarningTimer" to="." method="_on_warning_timer_timeout"]
