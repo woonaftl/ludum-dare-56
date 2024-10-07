@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc0ha7snxm5to"]
+
+[ext_resource type="Script" path="res://scenes/menus/bestiary/bestiary_entry/bestiary_entry.gd" id="1_7x5hs"]
+[ext_resource type="SpriteFrames" uid="uid://dhxeua2sngcos" path="res://2d/creatures/player/crusader.tres" id="1_8267a"]
+
+[node name="BestiaryEntry" type="PanelContainer"]
+script = ExtResource("1_7x5hs")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+position = Vector2(48, 48)
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("1_8267a")
+autoplay = "default"
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true

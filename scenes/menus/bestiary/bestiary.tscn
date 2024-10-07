@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctsc2qtufe5a1"]
+
+[ext_resource type="Script" path="res://scenes/menus/bestiary/bestiary.gd" id="1_4ae6d"]
+[ext_resource type="PackedScene" uid="uid://mnyny7qmi8do" path="res://scenes/menus/menu_background/menu_background.tscn" id="2_y2gpu"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu_button.gd" id="4_gjajv"]
+
+[node name="Bestiary" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ae6d")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_y2gpu")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+script = ExtResource("4_gjajv")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="CenterContainer/VBoxContainer/MainMenuButton" method="_on_pressed"]

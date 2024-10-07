@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://cc4k8bpe2sb66"]
+
+[ext_resource type="Texture2D" uid="uid://cu7w61sb785kc" path="res://2d/creatures/enemy/roach.png" id="1_ymv0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmp0k"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jngg1"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoyrr"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srchc"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in115"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy2rc"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g04n"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8w80"]
+atlas = ExtResource("1_ymv0j")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmp0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jngg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoyrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srchc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in115")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy2rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g04n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8w80")
+}],
+"loop": false,
+"name": &"die",
+"speed": 15.0
+}]

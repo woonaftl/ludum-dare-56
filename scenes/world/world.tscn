@@ -1,17 +1,22 @@
-[gd_scene load_steps=14 format=4 uid="uid://d1rd7eecbmn8b"]
+[gd_scene load_steps=19 format=4 uid="uid://d1rd7eecbmn8b"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_0tulu"]
 [ext_resource type="TileSet" uid="uid://hsxg0jwuqx1x" path="res://2d/tiles/tiles.tres" id="2_5dqjg"]
 [ext_resource type="Script" path="res://scenes/world/player_controller.gd" id="3_p8opo"]
 [ext_resource type="Script" path="res://scenes/world/playable_area.gd" id="4_21135"]
 [ext_resource type="Script" path="res://scenes/world/tutorial_label.gd" id="5_ci30c"]
+[ext_resource type="Script" path="res://scenes/world/camera_2d.gd" id="5_ep5du"]
 [ext_resource type="Script" path="res://scenes/world/experience_bar.gd" id="5_kvang"]
+[ext_resource type="Script" path="res://scenes/world/pause_label.gd" id="5_qtta8"]
 [ext_resource type="Texture2D" uid="uid://bhi4v738de6sb" path="res://2d/ui/xp_bar_under.png" id="5_u68dm"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/settings_button.gd" id="6_6vgqe"]
 [ext_resource type="Texture2D" uid="uid://clohvo4bpngch" path="res://2d/ui/xp_bar_progress.png" id="6_45bre"]
+[ext_resource type="PackedScene" uid="uid://blkswtqtg8woo" path="res://scenes/particles/explosion.tscn" id="6_quu2q"]
 [ext_resource type="Script" path="res://scenes/world/continue_button.gd" id="6_vf5e5"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu_button.gd" id="7_88d5o"]
+[ext_resource type="Script" path="res://scenes/world/pause_menu_container.gd" id="8_cnxe3"]
 [ext_resource type="Script" path="res://scenes/world/timer_label.gd" id="9_qox52"]
+[ext_resource type="Script" path="res://scenes/world/label.gd" id="13_7ioqg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_on3h3"]
 radius = 800.0
@@ -40,25 +45,14 @@ script = ExtResource("4_21135")
 shape = SubResource("CircleShape2D_on3h3")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerController"]
+unique_name_in_owner = true
+script = ExtResource("5_ep5du")
 
 [node name="Creatures" type="Node2D" parent="PlayerController"]
 unique_name_in_owner = true
 
 [node name="Enemies" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="GameOverDialog" type="AcceptDialog" parent="."]
-process_mode = 3
-title = ""
-ok_button_text = "QUIT"
-dialog_text = "GAME_OVER"
-
-[node name="WinDialog" type="AcceptDialog" parent="."]
-process_mode = 3
-auto_translate_mode = 1
-title = ""
-ok_button_text = "QUIT"
-dialog_text = "VICTORY"
 
 [node name="TimerSinceStart" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -69,11 +63,46 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
+[node name="Fireworks" type="Node2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+
+[node name="GPUParticles2D" parent="CanvasLayer/Fireworks" instance=ExtResource("6_quu2q")]
+
+[node name="GPUParticles2D2" parent="CanvasLayer/Fireworks" instance=ExtResource("6_quu2q")]
+position = Vector2(180, 0)
+
+[node name="GPUParticles2D3" parent="CanvasLayer/Fireworks" instance=ExtResource("6_quu2q")]
+position = Vector2(360, 0)
+
+[node name="GPUParticles2D4" parent="CanvasLayer/Fireworks" instance=ExtResource("6_quu2q")]
+position = Vector2(540, 0)
+
+[node name="GPUParticles2D5" parent="CanvasLayer/Fireworks" instance=ExtResource("6_quu2q")]
+position = Vector2(720, 0)
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -206.0
+offset_right = 66.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "PAUSE"
+script = ExtResource("5_qtta8")
+
 [node name="TutorialLabel" type="RichTextLabel" parent="CanvasLayer"]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(512, 512)
 offset_left = 8.0
 offset_right = 264.0
 offset_bottom = 256.0
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "TUTORIAL_FULL"
 fit_content = true
@@ -123,6 +152,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("8_cnxe3")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PauseMenuContainer"]
 layout_mode = 2
@@ -137,11 +167,6 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "PAUSE"
-horizontal_alignment = 1
-
 [node name="ContinueButton" type="Button" parent="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -155,6 +180,37 @@ script = ExtResource("6_6vgqe")
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "QUIT"
+script = ExtResource("7_88d5o")
+
+[node name="GameOverContainer" type="CenterContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverContainer"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "GAME_OVER"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/GameOverContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+script = ExtResource("13_7ioqg")
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/GameOverContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 text = "QUIT"
 script = ExtResource("7_88d5o")
 
@@ -194,14 +250,23 @@ wait_time = 300.0
 one_shot = true
 autostart = true
 
+[node name="SpiderTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="RoachTimer" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+autostart = true
+
 [connection signal="body_exited" from="PlayerController/PlayableArea" to="PlayerController/PlayableArea" method="_on_body_exited"]
-[connection signal="canceled" from="GameOverDialog" to="." method="_on_game_over_dialog_canceled"]
-[connection signal="confirmed" from="GameOverDialog" to="." method="_on_game_over_dialog_confirmed"]
-[connection signal="canceled" from="WinDialog" to="." method="_on_win_dialog_canceled"]
-[connection signal="confirmed" from="WinDialog" to="." method="_on_win_dialog_confirmed"]
 [connection signal="timeout" from="CanvasLayer/TutorialLabel/TutorialLifespanTimer" to="CanvasLayer/TutorialLabel" method="_on_tutorial_lifespan_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer/PauseMenuContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverContainer/VBoxContainer/QuitButton" to="CanvasLayer/GameOverContainer/VBoxContainer/QuitButton" method="_on_pressed"]
 [connection signal="timeout" from="IncreaseEnemyNumberTimer" to="." method="_on_increase_enemy_number_timer_timeout"]
 [connection signal="timeout" from="BossTimer" to="." method="_on_boss_timer_timeout"]
+[connection signal="timeout" from="SpiderTimer" to="." method="_on_spider_timer_timeout"]
+[connection signal="timeout" from="RoachTimer" to="." method="_on_roach_timer_timeout"]

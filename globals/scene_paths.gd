@@ -1,11 +1,19 @@
 extends Node
 
 
+const BESTIARY: String = "uid://ctsc2qtufe5a1"
+const BESTIARY_ENTRY: String = "uid://dc0ha7snxm5to"
 const CREDITS: String = "uid://b84p6pdxy56fo"
 const MAIN_MENU: String = "uid://t7hm2y57ass0"
 const SETTINGS: String = "uid://ebfrh27j07oo"
 const WORLD: String = "uid://d1rd7eecbmn8b"
 const REWARD: String = "uid://bq7evafx53mqo"
+
+const BANNER_NUCLEAR: String = "uid://b40jm6vrvd7ho"
+const BANNER_GRASSLAND: String = "uid://blrdg4bv3h647"
+const BANNER_TINY_CREATURES: String = "uid://bvjf0d73jcnlc"
+const BANNER_SHERIFF: String = "uid://drop33mw3lvpx"
+const BANNER_BUGS: String = "uid://baqsvx8p7uokp"
 
 const BOSS: PackedScene = preload("uid://b5e2n362npfc4")
 const LICE: PackedScene = preload("uid://dq00jggqamfg")
@@ -29,4 +37,6 @@ const RITUAL_EXPLOSION: PackedScene = preload("uid://xsoutq6h7i5v")
 const SPEAR: PackedScene = preload("uid://cdtlkojhkrqr")
 const MINE: PackedScene = preload("uid://c40r3ih1ob7sb")
 
-const EXPERIENCE: PackedScene = preload("uid://drbjrj72cuamt")
+const BOMB: PackedScene = preload("uid://b5buxwmx7l05o")
+const COIN: PackedScene = preload("uid://drbjrj72cuamt")
+const VACUUM: PackedScene = preload("uid://difxuinwqk75x")

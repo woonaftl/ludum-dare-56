@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bgq1r1n86k4ns"]
+
+[ext_resource type="Texture2D" uid="uid://ckx8qcamlxpg4" path="res://2d/creatures/enemy/lice.png" id="1_h47i1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s658"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hrxd"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s16l0"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyhub"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6a47"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wnw"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ok8u"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5ax8"]
+atlas = ExtResource("1_h47i1")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s658")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hrxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s16l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyhub")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6a47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ok8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5ax8")
+}],
+"loop": false,
+"name": &"die",
+"speed": 15.0
+}]

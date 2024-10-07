@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://ffevggw1ukbv"]
+
+[ext_resource type="Texture2D" uid="uid://dhsamyur4q8ch" path="res://2d/creatures/enemy/spider.png" id="1_4nesy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxvfp"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w20k3"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfdxy"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7d3b"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k74g8"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_731ta"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvypk"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2vhu"]
+atlas = ExtResource("1_4nesy")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxvfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w20k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfdxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7d3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k74g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_731ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvypk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2vhu")
+}],
+"loop": false,
+"name": &"die",
+"speed": 15.0
+}]

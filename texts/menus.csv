@@ -1,5 +1,5 @@
 ﻿keys,en,es,ru
-GAME_TITLE,UNTITLED GAME,JUEGO INTITULADO,БЕЗЫМЯННАЯ ИГРА
+GAME_TITLE,BUG BOUNTY,BUG BOUNTY,BUG BOUNTY
 MAIN_MENU,MAIN MENU,MENÚ PRINCIPAL,ГЛАВНОЕ МЕНЮ
 NEW_GAME,NEW GAME,PARTIDA NUEVA,НОВАЯ ИГРА
 SETTINGS,SETTINGS,OPCIONES,НАСТРОЙКИ
@@ -15,8 +15,12 @@ WINDOWED,WINDOWED,VENTANA,ОКНО
 FULL_SCREEN,FULL SCREEN,PANTALLA COMPLETO,ПОЛНЫЙ ЭКРАН
 OK,OK,BIEN,ДА
 GAME_OVER,GAME OVER,JUEGO TERMINADO,КОНЕЦ ИГРЫ
+VICTORY,VICTORY,VICTORIA,ПОБЕДА
+BESTIARY,BESTIARY,BESTIARIO,БЕСТИАРИЙ
 CANCEL,CANCEL,CANCELAR,ОТМЕНА
 CHOOSE,CHOOSE,ELEGIR,ВЫБРАТЬ
+ENEMIES_KILLED,"Enemies defeated:","Enemigos derrotados:","Противников побеждено:"
+TIME_SURVIVED,"Time survived:","Sobreviviste por:","Ты выжил в течение:"
 CHOOSE_REWARD,CHOOSE 1 OF 3,ELIGE 1 DE 3,ВЫБЕРИ 1 ИЗ 3
 THANKS_FOR_PLAYING,THANKS FOR PLAYING,GRACIAS POR JUGAR,СПАСИБО ЗА ИГРУ
 CREDITS_FULL,"[center]Game by Eugene Begunkov
@@ -31,8 +35,8 @@ Tema: Tiny Creatures[/center]","[center]Автор: Евгений Бегунк�
 Тема: Tiny Creatures[/center]"
 TUTORIAL_FULL,"Press WASD or ^<¤> to move
 Survive for 5 minutes
-Collect stars","Presiona WASD o ^<¤> para moverse
+Collect coins","Presiona WASD o ^<¤> para moverse
 Sobrevivir por 5 minutos
-Recoge estrellas","Нажимай WASD или ^<¤>, чтобы двигаться
+Recoge monedas","Нажимай WASD или ^<¤>, чтобы двигаться
 Проживи 5 минут
-Собирай звёздочки"
+Собирай монеты"

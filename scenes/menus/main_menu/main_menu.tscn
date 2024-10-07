@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://t7hm2y57ass0"]
+[gd_scene load_steps=8 format=3 uid="uid://t7hm2y57ass0"]
 
 [ext_resource type="PackedScene" uid="uid://mnyny7qmi8do" path="res://scenes/menus/menu_background/menu_background.tscn" id="1_0chfx"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu.gd" id="1_soy77"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/menus/main_menu/play_button.gd" id="2_xkhe4"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/credits_button.gd" id="3_33bvt"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/quit_button.gd" id="3_hfi28"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu/bestiary_button.gd" id="4_vwu1s"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -47,29 +48,31 @@ size_flags_horizontal = 4
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../SettingsButton")
 text = "NEW_GAME"
 script = ExtResource("2_xkhe4")
 
+[node name="BestiaryButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "BESTIARY"
+script = ExtResource("4_vwu1s")
+
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../PlayButton")
 text = "SETTINGS"
 script = ExtResource("2_ds857")
 
 [node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../QuitButton")
 text = "CREDITS"
 script = ExtResource("3_33bvt")
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../CreditsButton")
 text = "QUIT"
 script = ExtResource("3_hfi28")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/PlayButton" to="CenterContainer/VBoxContainer/VBoxContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/BestiaryButton" to="CenterContainer/VBoxContainer/VBoxContainer/BestiaryButton" method="_on_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/SettingsButton" to="CenterContainer/VBoxContainer/VBoxContainer/SettingsButton" method="_on_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/CreditsButton" to="CenterContainer/VBoxContainer/VBoxContainer/CreditsButton" method="_on_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/QuitButton" to="CenterContainer/VBoxContainer/VBoxContainer/QuitButton" method="_on_pressed"]

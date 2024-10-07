@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://drbjrj72cuamt"]
+[gd_scene load_steps=5 format=3 uid="uid://difxuinwqk75x"]
 
-[ext_resource type="Script" path="res://scenes/pickups/experience/experience.gd" id="1_8eabg"]
-[ext_resource type="Texture2D" uid="uid://cp8ax4t5kmleh" path="res://2d/pickups/star.png" id="3_d2nba"]
+[ext_resource type="Script" path="res://scenes/pickups/vacuum/vacuum.gd" id="1_t7xu3"]
+[ext_resource type="Texture2D" uid="uid://dk0ykyfa2ke4k" path="res://2d/pickups/vacuum.png" id="2_ucfh8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1mgfc"]
 radius = 8.0
@@ -10,16 +10,16 @@ radius = 8.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_d2nba")
+"texture": ExtResource("2_ucfh8")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Experience" type="Node2D"]
+[node name="Vacuum" type="Node2D"]
 z_index = 4
-script = ExtResource("1_8eabg")
+script = ExtResource("1_t7xu3")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -30,12 +30,12 @@ shape = SubResource("CircleShape2D_1mgfc")
 sprite_frames = SubResource("SpriteFrames_q08yl")
 
 [node name="LifespanTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 
 [node name="WarningTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 58.0
 one_shot = true
 autostart = true
 

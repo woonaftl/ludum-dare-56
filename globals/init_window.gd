@@ -8,5 +8,4 @@ func _ready() -> void:
 	)
 	var current_window = get_window()
 	current_window.min_size = viewport_size
-	current_window.size = 2 * viewport_size
-	current_window.move_to_center()
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)

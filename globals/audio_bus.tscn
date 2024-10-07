@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr0m6set84b3m"]
+[gd_scene load_steps=15 format=3 uid="uid://dr0m6set84b3m"]
 
 [ext_resource type="Script" path="res://globals/audio_bus.gd" id="1_1vobk"]
 [ext_resource type="AudioStream" uid="uid://cwj5433t75blx" path="res://audio/bullet_hit.wav" id="2_06c1g"]
 [ext_resource type="AudioStream" uid="uid://bjmpf1p370x6t" path="res://audio/click.wav" id="2_6ys4j"]
+[ext_resource type="AudioStream" uid="uid://dd78w4iq0kxkc" path="res://audio/background.ogg" id="2_jelm3"]
 [ext_resource type="AudioStream" uid="uid://cwu0tavdwdy1f" path="res://audio/creature_die.wav" id="4_ymcwx"]
 [ext_resource type="AudioStream" uid="uid://b6lcs4ltr0txs" path="res://audio/explosion.wav" id="5_3syju"]
 [ext_resource type="AudioStream" uid="uid://djtlauacau6hh" path="res://audio/grenade_throw.wav" id="6_mpdxn"]
@@ -17,6 +18,10 @@
 [node name="AudioBus" type="Node"]
 process_mode = 3
 script = ExtResource("1_1vobk")
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jelm3")
+autoplay = true
 
 [node name="BulletHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_06c1g")

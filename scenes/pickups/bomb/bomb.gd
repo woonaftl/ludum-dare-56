@@ -1,9 +1,8 @@
 extends Node2D
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	AudioBus.play("PickupXp")
-	body.add_experience()
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	get_tree().current_scene.nuke()
 	queue_free()
 
 

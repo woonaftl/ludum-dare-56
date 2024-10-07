@@ -1,19 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhkts5j7v0glo"]
+[gd_scene load_steps=6 format=3 uid="uid://dhkts5j7v0glo"]
 
 [ext_resource type="Script" path="res://scenes/creatures/enemy/enemy.gd" id="1_e214w"]
-[ext_resource type="Texture2D" uid="uid://cu7w61sb785kc" path="res://2d/creatures/enemy/roach.png" id="2_wcu7l"]
+[ext_resource type="SpriteFrames" uid="uid://cc4k8bpe2sb66" path="res://2d/creatures/enemy/roach.tres" id="2_kvbui"]
 [ext_resource type="Script" path="res://scenes/damage_area.gd" id="3_ydq43"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y8bi3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_wcu7l")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gvmd"]
 radius = 8.0
@@ -31,7 +20,8 @@ hp_max = 4
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_y8bi3")
+sprite_frames = ExtResource("2_kvbui")
+animation = &"die"
 autoplay = "default"
 
 [node name="CollisionWithEnemies" type="CollisionShape2D" parent="."]
@@ -53,5 +43,6 @@ wait_time = 0.2
 one_shot = true
 autostart = true
 
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
 [connection signal="timeout" from="SpawnInvulnerabilityTimer" to="." method="_on_spawn_invulnerability_timer_timeout"]

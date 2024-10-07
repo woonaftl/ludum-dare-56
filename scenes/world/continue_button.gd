@@ -7,4 +7,3 @@ extends Button
 func _on_pressed() -> void:
 	AudioBus.play("Click")
 	pause_menu_container.visible = false
-	get_tree().paused = false

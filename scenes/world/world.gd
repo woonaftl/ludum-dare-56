@@ -16,19 +16,24 @@ var all_creatures = [
 
 
 var player_level: int = 1
+var is_victory: bool = false
+var enemies_killed: int = 0
 
 
 @onready var player_controller: PlayerController = %PlayerController as PlayerController
 @onready var enemies: Node2D = %Enemies
 @onready var creatures: Node2D = %Creatures
-@onready var game_over_dialog: AcceptDialog = $GameOverDialog
-@onready var win_dialog: AcceptDialog = $WinDialog
 @onready var experience_bar: ExperienceBar = %ExperienceBar as ExperienceBar
 @onready var reward_container: HBoxContainer = %RewardContainer
 @onready var reward_panel_container: CenterContainer = %RewardPanelContainer
 @onready var timer_since_start: Timer = %TimerSinceStart as Timer
 @onready var pause_menu_container: CenterContainer = %PauseMenuContainer
 @onready var continue_button: Button = %ContinueButton
+@onready var camera_2d: Camera2D = %Camera2D
+@onready var game_over_container: CenterContainer = %GameOverContainer
+@onready var game_over_label: Label = %GameOverLabel
+@onready var fireworks: Node2D = %Fireworks
+@onready var quit_button: Button = %QuitButton
 
 
 @onready var experience_needed: float = 4.0:
@@ -46,7 +51,7 @@ var player_level: int = 1
 
 func _ready() -> void:
 	randomize()
-	get_tree().paused = false
+	get_tree().paused = true
 	for i in range(STARTING_ENEMY_COUNT):
 		spawn_random_enemy()
 	all_creatures.shuffle()
@@ -63,13 +68,6 @@ func _process(_delta: float) -> void:
 	else:
 		recalc_xp()
 		experience_bar.update(experience, experience_needed)
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().paused = true
-		pause_menu_container.visible = true
-		continue_button.grab_focus()
 
 
 func spawn_random_enemy_after_delay() -> void:
@@ -119,37 +117,24 @@ func spawn_enemy(scene: PackedScene) -> void:
 	enemies.add_child(enemy)
 
 
-func _on_boss_timer_timeout() -> void:
-	spawn_enemy(ScenePaths.BOSS)
-
-
 func get_enemy_count_limit() -> int:
 	return clampi(80 + player_level * 5, 80, 150)
 
 
 func game_over() -> void:
-	game_over_dialog.popup_centered()
-
-
-func _on_game_over_dialog_confirmed() -> void:
-	get_tree().change_scene_to_file(ScenePaths.MAIN_MENU)
-
-
-func _on_game_over_dialog_canceled() -> void:
-	get_tree().change_scene_to_file(ScenePaths.MAIN_MENU)
+	game_over_container.visible = true
+	timer_since_start.paused = true
+	quit_button.grab_focus()
 
 
 func win() -> void:
-	win_dialog.popup_centered()
+	is_victory = true
 	get_tree().paused = true
-
-
-func _on_win_dialog_canceled() -> void:
-	get_tree().change_scene_to_file(ScenePaths.CREDITS)
-
-
-func _on_win_dialog_confirmed() -> void:
-	get_tree().change_scene_to_file(ScenePaths.CREDITS)
+	await get_tree().create_timer(2.0).timeout
+	fireworks.visible = true
+	game_over_container.visible = true
+	game_over_label.text = tr("VICTORY")
+	quit_button.grab_focus()
 
 
 func spawn_explosion(global_pos: Vector2) -> void:
@@ -159,9 +144,19 @@ func spawn_explosion(global_pos: Vector2) -> void:
 
 
 func spawn_experience(global_pos: Vector2) -> void:
-	var experience_star = ScenePaths.EXPERIENCE.instantiate()
-	experience_star.global_position = global_pos
-	add_child(experience_star)
+	var r = randf()
+	if r > 0.02:
+		var coin = ScenePaths.COIN.instantiate()
+		coin.global_position = global_pos
+		add_child(coin)
+	elif r > 0.01:
+		var vacuum = ScenePaths.VACUUM.instantiate()
+		vacuum.global_position = global_pos
+		add_child(vacuum)
+	else:
+		var bomb = ScenePaths.BOMB.instantiate()
+		bomb.global_position = global_pos
+		add_child(bomb)
 
 
 func add_experience() -> void:
@@ -179,6 +174,8 @@ func level_up() -> void:
 		if i == 0:
 			reward.button.grab_focus()
 		var creature = all_creatures[i]
+		if not Creatures.unlocks.has(creature):
+			Creatures.unlocks.append(creature)
 		reward.creature = creature
 		reward.title_label.text = tr(Creatures.NAME_BY_CREATURE[creature] + "_TITLE")
 		reward.description_label.text = tr(Creatures.NAME_BY_CREATURE[creature] + "_DESCRIPTION")
@@ -187,7 +184,6 @@ func level_up() -> void:
 
 
 func add_creature(creature: PackedScene) -> void:
-	get_tree().paused = false
 	for reward in reward_container.get_children():
 		reward.queue_free()
 	reward_panel_container.visible = false
@@ -205,9 +201,33 @@ func recalc_xp() -> void:
 	experience_needed = new_experience_needed
 
 
+func nuke() -> void:
+	modulate = Color(100.0, 100.0, 100.0, 1.0)
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		enemy.take_damage(5)
+	await get_tree().create_timer(0.05).timeout
+	get_tree().current_scene.modulate = Color.WHITE
+
+
 func _on_increase_enemy_number_timer_timeout() -> void:
 	spawn_random_enemy()
 
 
 func get_time_since_start() -> float:
 	return timer_since_start.wait_time - timer_since_start.time_left
+
+
+func _on_boss_timer_timeout() -> void:
+	if not Creatures.unlocks.has(ScenePaths.BOSS):
+		Creatures.unlocks.append(ScenePaths.BOSS)
+	spawn_enemy(ScenePaths.BOSS)
+
+
+func _on_spider_timer_timeout() -> void:
+	if not Creatures.unlocks.has(ScenePaths.SPIDER):
+		Creatures.unlocks.append(ScenePaths.SPIDER)
+
+
+func _on_roach_timer_timeout() -> void:
+	if not Creatures.unlocks.has(ScenePaths.ROACH):
+		Creatures.unlocks.append(ScenePaths.ROACH)

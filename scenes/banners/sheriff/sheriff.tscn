@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://drop33mw3lvpx"]
+
+[ext_resource type="Texture2D" uid="uid://cfgrqvdxbq2yy" path="res://2d/banners/sheriff.png" id="1_dh63l"]
+[ext_resource type="Script" path="res://scenes/banners/sheriff/continue_button.gd" id="2_yhueo"]
+
+[node name="Sheriff" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_dh63l")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "SHERIFF_TEXT"
+fit_content = true
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "CONTINUE"
+script = ExtResource("2_yhueo")
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="VBoxContainer/ContinueButton" method="_on_pressed"]

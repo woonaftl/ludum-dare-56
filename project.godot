@@ -10,13 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Untitled Game"
-config/name_localized={
-"es": "Juego Intitulado",
-"ru": "Безымянная игра"
-}
+config/name="Bug Bounty"
 run/main_scene="res://scenes/menus/language_select/language_select.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+config/icon="res://2d/icon.png"
 
 [autoload]
 
@@ -93,7 +91,7 @@ move_down={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://texts/menus.en.translation", "res://texts/menus.es.translation", "res://texts/menus.ru.translation", "res://texts/creatures.en.translation", "res://texts/creatures.es.translation", "res://texts/creatures.ru.translation")
+locale/translations=PackedStringArray("res://texts/menus.en.translation", "res://texts/menus.es.translation", "res://texts/menus.ru.translation", "res://texts/creatures.en.translation", "res://texts/creatures.es.translation", "res://texts/creatures.ru.translation", "res://texts/story.en.translation", "res://texts/story.es.translation", "res://texts/story.ru.translation")
 
 [layer_names]
 
@@ -105,5 +103,6 @@ locale/translations=PackedStringArray("res://texts/menus.en.translation", "res:/
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.176004, 0.331689, 0.325613, 1)
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 2d/snap/snap_2d_transforms_to_pixel=true

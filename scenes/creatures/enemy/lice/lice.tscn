@@ -1,19 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq00jggqamfg"]
+[gd_scene load_steps=6 format=3 uid="uid://dq00jggqamfg"]
 
 [ext_resource type="Script" path="res://scenes/creatures/enemy/enemy.gd" id="1_7huln"]
-[ext_resource type="Texture2D" uid="uid://ckx8qcamlxpg4" path="res://2d/creatures/enemy/lice.png" id="1_25boi"]
+[ext_resource type="SpriteFrames" uid="uid://bgq1r1n86k4ns" path="res://2d/creatures/enemy/lice.tres" id="2_812oc"]
 [ext_resource type="Script" path="res://scenes/damage_area.gd" id="3_am54j"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_thvr5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_25boi")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gvmd"]
 radius = 8.0
@@ -31,7 +20,9 @@ hp_max = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-sprite_frames = SubResource("SpriteFrames_thvr5")
+sprite_frames = ExtResource("2_812oc")
+animation = &"die"
+autoplay = "default"
 
 [node name="CollisionWithEnemies" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -52,5 +43,6 @@ wait_time = 0.2
 one_shot = true
 autostart = true
 
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
 [connection signal="timeout" from="SpawnInvulnerabilityTimer" to="." method="_on_spawn_invulnerability_timer_timeout"]
